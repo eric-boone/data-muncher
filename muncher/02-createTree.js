@@ -2,13 +2,13 @@ var fs = require('fs')
 
 var sourceFile = './output/taxa.json'
 
-var numberOfOrganismsToProcess = 101
 
 fs.readFile(sourceFile, 'utf-8', function(err, data) {
   if (err) throw err
 
   var chordataTree = []
   var organismsArray = JSON.parse(data)
+  var numberOfOrganismsToProcess = organismsArray.length
 
   // organismsArray.forEach(function(organism, i) {
   for (var i=0; i<numberOfOrganismsToProcess; i++) {
