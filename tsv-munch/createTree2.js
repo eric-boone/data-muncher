@@ -14,15 +14,15 @@ var organismsArray =
 
 var tree =
 [
-  {
-    "name": "Zappendicularia",
-    "children": []
-  }
+  // {
+  //   "name": "Zappendicularia",
+  //   "children": []
+  // }
 ]
 
 organismsArray.forEach(function(item, i) {
-  console.log(i, item, classDoesNotExist(item.class, tree));
-  if (classDoesNotExist(item.class, tree)) {
+  console.log(i, item.class, classExists(item.class, tree));
+  if (!classExists(item.class, tree)) {
     var newClass = {
       "name": organismsArray[i].class,
       "children": []
@@ -34,17 +34,12 @@ organismsArray.forEach(function(item, i) {
 console.log('==================');
 console.log('Tree', tree);
 
-function classDoesNotExist(className, tree) {
-  var notFound = true
-  // iterate over tree array
+function classExists(className, tree) {
+  var found = false
   tree.forEach(function(treeItem, i) {
-    // console.log(i, className, treeItem.name);
-    // console.log((className === treeItem.name));
     if (className === treeItem.name) {
-      notFound = false
+      found = true
     }
   })
-  // if you get through the whole thing and haven't found it,
-  // return classDoesNotExist
-  return notFound
+  return found
 }
