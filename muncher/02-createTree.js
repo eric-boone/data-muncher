@@ -9,6 +9,7 @@ fs.readFile(sourceFile, 'utf-8', function(err, data) {
   var chordataTree = []
   var organismsArray = JSON.parse(data)
   var numberOfOrganismsToProcess = organismsArray.length
+  // var numberOfOrganismsToProcess = 100
 
   // organismsArray.forEach(function(organism, i) {
   for (var i=0; i<numberOfOrganismsToProcess; i++) {
@@ -84,8 +85,13 @@ fs.readFile(sourceFile, 'utf-8', function(err, data) {
 
   } // end for loop
 
+  var root = {
+    taxonRank: 'phylum',
+    name: 'chordates',
+    children: chordataTree
+  }
   // After the tree is built, write it to a file
-  fs.writeFile('./output/tree-' + numberOfOrganismsToProcess + '.json', JSON.stringify(chordataTree))
+  fs.writeFile('./output/tree-' + numberOfOrganismsToProcess + '.json', JSON.stringify(root))
 })
 
 
